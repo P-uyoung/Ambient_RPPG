@@ -48,7 +48,7 @@
 <div markdown="1">
 
 ### 1. 프로세스
-![](https://github.com/P-uyoung/Ambient_RPPG/tree/main/figure)
+![](https://github.com/P-uyoung/Ambient_RPPG/tree/main/figure/process.png)
 
 ### 2. 데이터 수집
 - k-means clustering을 통해 SOC 함량의 variance를 고려한 토양 채취 실험을 계획함. [코드 확인](https://github.com/P-uyoung/X-Corps_Soil-detection/tree/main/k-means)
