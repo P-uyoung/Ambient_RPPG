@@ -28,8 +28,7 @@
 
 ## **요약**
 - (input)영상의 RGB신호를 통해 (output)심박수 측정
-- TS-CAN 모듈로 모델을 경량화하여 **Latency를 87% (164.3 -> 20.7ms/video) 감소시켜** 서버 연동없이 스마트폰 기기만으로 원격 심박수 측정이 가능한 모델링 함.
-- 추가적으로, TensorflowLite의 라이브러리를 사용하여 **용량을 32.07% (2.34MB-> 0.75MB) 경량화 함**.
+- TensorflowLite 라이브러리를 사용하여 **모델 용량을 32.07% (2.34MB-> 0.75MB) 경량화하여** 서버 연동없이 스마트폰 기기만으로 원격 심박수 측정이 가능한 모델링 함.
 <br/>
 
 ## **기술 및 도구**
@@ -48,13 +47,14 @@
 <div markdown="1">
 
 ### 1. 프로세스
-![](https://github.com/P-uyoung/Ambient_RPPG/tree/main/figure/process.png)
+![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/method_process.png)
 
-### 2. 데이터 수집
-- k-means clustering을 통해 SOC 함량의 variance를 고려한 토양 채취 실험을 계획함. [코드 확인](https://github.com/P-uyoung/X-Corps_Soil-detection/tree/main/k-means)
-- SNAP, QGIS 프로그램을 이용해 해당 지역의 MSI 데이터를 얻음 (input feature 1)  
-- 간단한 실험을 통해 SWHC, ST 데이터를 얻음 (additional input features)  
-- [수집한 데이터 자료](https://github.com/Integerous/goQuality/blob/b587bbff4dce02e3bec4f4787151a9b6fa326319/frontend/src/components/PostInput.vue#L67)
+### 2. 데이터
+  1. AFRL 데이터셋 : 해당 데이터로 pre-train된 모델을 경량화 함.  
+  
+  2. UBFC, VIPL-HR-V2 데이터셋 : 경량화한 모델에 대하여 성능 측정 함. [(일부 데이터)](https://github.com/P-uyoung/Ambient_RPPG/tree/main/VIPL_v2)
+  
+<br/>
 
 ### 3. 모델링
 - 모델링 결과
