@@ -50,16 +50,21 @@
 ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/method_process.png)
 
 ### 2. 데이터
-  1. AFRL 데이터셋 : 해당 데이터로 pre-train된 모델을 경량화 함.  
+  1. AFRL 데이터셋 : pre-train된 모델이 사용한 데이터  
   
-  2. UBFC, VIPL-HR-V2 데이터셋 : 경량화한 모델에 대하여 성능 측정 함. [(일부 데이터)](https://github.com/P-uyoung/Ambient_RPPG/tree/main/VIPL_v2)
+  2. UBFC, VIPL-HR-V2 데이터셋 : 경량화한 모델에 대하여 성능 측정에 사용 [(일부 데이터)](https://github.com/P-uyoung/Ambient_RPPG/tree/main/VIPL_v2)
   
 <br/>
 
 ### 3. 모델링
 - 모델링 결과
-![](https://github.com/P-uyoung/X-Corps_Soil-detection/blob/main/figure/result.png)  
-- [코드 확인](https://github.com/P-uyoung/X-Corps_Soil-detection/tree/main/uyoung_model)  
+  1. UBFC 데이터셋 : 경량화에 따른 모델의 성능 변화(MAE)  
+![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/UBFC_performance.png)   
+  
+    1. VIPL2 데이터셋 : 경량화에 따른 모델의 성능 변화(MAE)  
+![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/VIPL2_performance.png)
+  
+- [코드 확인](https://github.com/P-uyoung/Ambient_RPPG/tree/main/ambient_rPPG/code)  
 - 상세 설명  
     1. 10m resolution  
     2. 20m resolution  
