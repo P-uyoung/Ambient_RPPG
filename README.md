@@ -21,7 +21,6 @@
   - [프로세스](#1-프로세스)
   - [데이터](#2-데이터)
   - [모델링](#3-모델링)
-  - [모델 결과](#4-모델-결과)
 - [트러블 슈팅](#트러블-슈팅)
 </b>
 <br/>
@@ -65,7 +64,8 @@
   
 - [코드 확인](https://github.com/P-uyoung/Ambient_RPPG/tree/main/ambient_rPPG/code)  
 - 상세 설명   
-  본 프로젝트 모델은 두 개의 모듈로 이루어진다. 
+
+  본 프로젝트 모델은 두 개의 모듈로 구성
   1. Face Detection 
       - 데이터 영상에서 얼굴에 해당하는 영역만 탐지하여 추출하는 모듈
       - residual neural network(ResNet)로 구현
@@ -74,50 +74,18 @@
   2. Heart Rate Estimation
       - 실시간 혈류량 변화에 따른 심박수 예측 모듈  
       - temporal shift-convolutional attention network(TS-CAN)로 구현
-      1. Temporal shift (TF) 모듈
-        - 영상에서 특징 추출 시, 시간상의 정보(temporal information)를 고려하기 위해 3D convolution 연산해야 함.
-        ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TF.png)   
-  
-      2. CAN 모듈 : Attention mask 사용
-        - 이상치를 제거하여 얼굴 프레임에 더욱 초점을 맞춤.  
-      - 개념도  
-      ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TS_CAN.png)  
-  
-  
-    1. 10m resolution  
-    2. 20m resolution  
-    3. Feature  
-        1. 1단계 - 기존 연구 방법대로
-            1. B2 ~ B12
-            2. NDVI
-            3. BSI
-        2. 2단계 
-            1. B2 ~ B12
-            2. NDVI
-            3. BSI
-            4. 토양에서 직접 추출한 features (Approach1 : hybrid remote sensing)
-                1. SWHC (Soil Water Holing Capacity)
-                2. Sand (%)
-            5. SAR (synthetic aperture radar) (Approach2 : full remote sensing)
-                1. before rain
-                2. after rain
-    4. Label
-        1. SOC (Soil Organic Carbon)
-    5. Normalize
-        1. MSI의 각 band를 StandardScaler
-    6. Modeling
-        1. 1단계: 20m resolution data를 가지고 다음 세 가지 method로 모델링한다.
-            1. SVM (Support Vector Machine)
-            2. PLSR (Partial Least Squares Regression)
-            3. RF (Random Forest)
-        2. 2단계
-            1. 1단계에서 제일 잘 fit 되는 모델로 다음과 같이 네 번의 모델링을 한다.
-
-            <img width="398" alt="image" src="https://user-images.githubusercontent.com/63593428/199702219-f815e88a-d5fa-43b0-b08d-529329d61ace.png">
-
-        3. train dataset : test dataset =  8:2
-        4. Evaluation
-            1. R-squared
+        1. Temporal shift (TF) 모듈  
+        - 영상에서 특징 추출 시, 시간상의 정보(temporal information)를 고려하기 위해 3D convolution 연산해야 함.  
+        ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TS.png)   
+        
+        <br/>
+        
+        2. CAN 모듈 : Attention mask 사용     
+        - 이상치를 제거하여 얼굴 프레임에 더욱 초점을 맞춤.
+        <br/>
+        
+       - 개념도  
+       ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TS-CAN.png)    
 
 </div>
 </details>
@@ -125,3 +93,32 @@
 </br>
 
 ## 트러블 슈팅
+### 1. tensorflow(TF)로 pre-trained 된 모델 tensorflowLite(TFL)로 변환하는 과정에서 RuntimeError  
+- 문제상황 : TFL는 TF와 달리, **batch inputs** 을 지원하지 않기 때문에 런타임 에러 발생함.
+
+![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/Trouble_RuntimeError.png)   
+
+- 해결 : batch를 input 배열의 차원으로 추가하여, 4차원 input으로 모델링 함.
+
+<!--
+<details>
+<summary><b>기존 코드</b></summary>
+<div markdown="1">
+
+~~~java
+/**
+ * 게시물 Top10 (기준: 댓글 수 + 좋아요 수)
+ * @return 인기순 상위 10개 게시물
+ */
+public Page<PostResponseDto> listTopTen() {
+
+    PageRequest pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "rankPoint", "likeCnt");
+    return postRepository.findAll(pageRequest).map(PostResponseDto::new);
+}
+
+~~~
+
+</div>
+</details>
+-->
+
