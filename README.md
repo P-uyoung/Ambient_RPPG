@@ -65,7 +65,26 @@
 ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/VIPL2_performance.png)
   
 - [코드 확인](https://github.com/P-uyoung/Ambient_RPPG/tree/main/ambient_rPPG/code)  
-- 상세 설명  
+- 상세 설명   
+  본 프로젝트 모델은 두 개의 모듈로 이루어진다. 
+  1. Face Detection 
+      - 데이터 영상에서 얼굴에 해당하는 영역만 탐지하여 추출하는 모듈
+      - residual neural network(ResNet)로 구현
+      - ResNet은 기존의 CNN의 문제인 신경망의 레이어가 깊어질수록 데이터 학습이 어려워지는 문제를 해결한 알고리즘임.
+  
+  2. Heart Rate Estimation
+      - 실시간 혈류량 변화에 따른 심박수 예측 모듈  
+      - temporal shift-convolutional attention network(TS-CAN)로 구현
+      1. Temporal shift (TF) 모듈
+        - 영상에서 특징 추출 시, 시간상의 정보(temporal information)를 고려하기 위해 3D convolution 연산해야 함.
+        ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TF.png)   
+  
+      2. CAN 모듈 : Attention mask 사용
+        - 이상치를 제거하여 얼굴 프레임에 더욱 초점을 맞춤.  
+      - 개념도  
+      ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TS_CAN.png)  
+  
+  
     1. 10m resolution  
     2. 20m resolution  
     3. Feature  
