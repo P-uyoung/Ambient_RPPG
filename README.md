@@ -52,8 +52,7 @@
 ### 2. 데이터
   1. AFRL 데이터셋 : pre-train된 모델이 사용한 데이터  
   
-  2. UBFC, VIPL-HR-V2 데이터셋 : 경량화한 모델에 대하여 성능 측정에 사용 [(일부 데이터)](https://github.com/P-uyoung/Ambient_RPPG/tree/main/VIPL_v2)
-  
+  2. UBFC, VIPL-HR-V2 데이터셋 : 경량화한 모델에 대하여 성능 측정에 사용 [(일부 데이터)](https://github.com/P-uyoung/Ambient_RPPG/tree/main/VIPL_v2)  
 <br/>
 
 ### 3. 모델링
