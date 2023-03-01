@@ -41,9 +41,10 @@
 
 
 ## **구현**
+<!-- 
 <details>
 <summary><b>구현 설명 펼치기</b></summary>
-<div markdown="1">
+<div markdown="1">  -->
 
 ### 1. 프로세스
 ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/method_process.png)
@@ -87,8 +88,9 @@
        - 개념도  
        ![](https://github.com/P-uyoung/Ambient_RPPG/blob/main/figure/TS-CAN.png)    
 
+<!-- 
 </div>
-</details>
+</details>  -->
 
 </br>
 
